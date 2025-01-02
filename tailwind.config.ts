@@ -15,6 +15,13 @@ export default {
   theme: {
     extend: {
       colors: {
+        red: "var(--red)",
+        gray100: "var(--gray100)",
+        gray200: "var(--gray200)",
+        gray300: "var(--gray300)",
+        gray400: "var(--gray400)",
+        gray500: "var(--gray500)",
+        gray600: "var(--gray600)",
         white: "var(--white)",
         black: "var(--black)",
         blue: "var(--blue)",

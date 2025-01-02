@@ -3,14 +3,22 @@
 @tailwind utilities;
 
 :root {
+  --red: #ff0000;
+  --gray100: #FAFDFF;
+  --gray200: #E1EBF4;
+  --gray300: #B3C1CF;
+  --gray400: #73808C;
+  --gray500: #45525F;
+  --gray600: #1A1F24;
   --white: #ffffff;
   --black: #171717;
   --blue: #023D79;
   --grey: #dee2e6;
-  --yellow: #FFEA30;
+  --yellow: #fbb22f;
   --lightYellow: #FFFACD; 
 }
 
 body {
   color: var(--black);
+  font-family: 'Roboto', sans-serif;
 }
