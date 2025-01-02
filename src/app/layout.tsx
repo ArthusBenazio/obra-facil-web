@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "../ui/styles/globals.css";
-
-
+import { AuthProvider } from "@/infra/providers/auth-provider";
 
 export const metadata: Metadata = {
   title: "Obra Fácil",
@@ -14,10 +13,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <AuthProvider>
     <html lang="pt-BR">
       <body>
         {children}
       </body>
     </html>
+    </AuthProvider>
   );
 }
