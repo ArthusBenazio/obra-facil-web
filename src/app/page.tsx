@@ -1,9 +1,8 @@
 
 import LayoutAuth from "@/ui/layout/layoutAuth";
-import '../ui/styles/globals.css'
 import FormLogin from "@/ui/components/formLogin";
 
-export default function Home() {
+export default function Login() {
   return (
     <LayoutAuth title="Login">
       <FormLogin />

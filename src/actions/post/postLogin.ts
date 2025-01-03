@@ -1,35 +1,29 @@
-import { API_BASE_URL } from "@/app/services/config";
+'use server'
+import { signIn } from "@/auth";
 
-export interface LoginCredentials {
+interface User {
+  id: string;
+  name: string;
   email: string;
-  password: string;
 }
+export async function postLogin(email: string, password: string): Promise<User | null> {
+  console.log("signin", email, password);
 
-export interface LoginResponse {
-  token: string;
-  user: { id: string; name: string; email: string; subscriptionPlan: string; role: string };
-}
-
-export async function postLogin(credentials: LoginCredentials): Promise<LoginResponse>  {
   try {
-    const response = await fetch(`${API_BASE_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
+    const response = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
     });
 
-    if (!response.ok) {
-      throw new Error("Credenciais inválidas ou erro no servidor.");
-    }
+    console.log("signin response", response);
 
-    const data = await response.json();
-    console.log(data);
-    alert('Login bem-sucedido! Bem-vindo, ' + data.user.name);
-    return data; 
+    if (!response || response.error) {
+      throw new Error("Erro na autenticação: " + response?.error);
+    }
+    return { id: '', name: '', email: response.user?.email ?? '' };
   } catch (error) {
-    console.error("Erro na autenticação:", error);
-    throw error;
+    console.log("teste", error);
+    throw new Error("Erro ao buscar usuário na API.", { cause: error });
   }
 }
